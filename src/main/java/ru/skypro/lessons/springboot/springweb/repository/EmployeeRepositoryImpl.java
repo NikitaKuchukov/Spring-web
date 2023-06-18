@@ -1,14 +1,16 @@
 package ru.skypro.lessons.springboot.springweb.repository;
 
+import lombok.Data;
 import org.springframework.stereotype.Component;
 import ru.skypro.lessons.springboot.springweb.model.Employee;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
 @Component
 public class EmployeeRepositoryImpl implements EmployeeRepository {
-    private final List<Employee> EMPLOYEE_LIST = List.of(
+    private List<Employee> employees = List.of(
             new Employee("Anton", 150000),
             new Employee("Gena", 110000),
             new Employee("Jenya", 120000),
@@ -22,6 +24,12 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
     @Override
     public List<Employee> getAll() {
-        return new ArrayList<>(EMPLOYEE_LIST);
+        return new ArrayList<>(employees);
+    }
+
+    @Override
+    public Employee add(Employee employee) {
+        employees.add(employee);
+        return employee;
     }
 }

@@ -20,8 +20,8 @@ public class EmployeeController {
     }
 
     @RequestMapping("createList")
-    public void createEmployeeList(@RequestBody List<Employee> employees) {
-        employeeService.createEmployeeList(employees);
+    public List<Employee> createEmployeeList(@RequestBody List<Employee> employees) {
+        return employeeService.createEmployeeList(employees);
     }
 
     @RequestMapping("update/{id}")

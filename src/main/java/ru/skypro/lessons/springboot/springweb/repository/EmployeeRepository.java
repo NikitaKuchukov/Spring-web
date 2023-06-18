@@ -8,4 +8,6 @@ import java.util.List;
 @Repository
 public interface EmployeeRepository {
     List<Employee> getAll();
+
+    Employee add(Employee employee);
 }
