@@ -1,0 +1,35 @@
+### Получение всех сотрудников
+GET http://localhost:8080/employee/getAll
+Content-Type: application/json
+
+### Получение сотрудника по id
+GET http://localhost:8080/employee/get/0
+Content-Type: application/json
+
+
+### Создание сотрудников
+POST http://localhost:8080/employee/createList
+Content-Type: application/json
+
+[
+  {
+    "name": "Vasya",
+    "salary": 12000
+  },
+  {
+    "name": "asdfgsdg",
+    "salary": 123123
+  }
+]
+
+### Обновление сотрудника
+PUT http://localhost:8080/employee/update/1
+Content-Type: application/json
+
+{
+  "name": "sdgsdg",
+  "salary": 1234
+}
+
+### Удаление сотрудника
+DELETE http://localhost:8080/employee/delete/0
