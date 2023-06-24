@@ -1,19 +1,30 @@
 package ru.skypro.lessons.springboot.springweb.service;
 
-import ru.skypro.lessons.springboot.springweb.model.Employee;
+import org.springframework.web.bind.annotation.RequestParam;
+import ru.skypro.lessons.springboot.springweb.dto.EmployeeDto;
+import ru.skypro.lessons.springboot.springweb.entity.Employee;
 
 import java.util.List;
 
 public interface EmployeeService {
-    List<Employee> getAll();
+    EmployeeDto findEmployeeWithMinSalary();
+    EmployeeDto findEmployeeWithMaxSalary();
+    double findSumSalariesOfEmployees();
+    List<EmployeeDto> findEmployeesWithAboveAverageSalaries();
+    List<EmployeeDto> getAll();
 
-    List<Employee> createEmployeeList(List<Employee> employees);
+    List<EmployeeDto> createEmployeeList(List<EmployeeDto> employees);
 
-    Employee updateEmployeeById(int id, String name, int salary);
+    void updateEmployeeById(int id, EmployeeDto employeeDto);
 
-    Employee getEmployeeById(int id);
+    EmployeeDto getEmployeeById(int id);
 
     void deleteEmployeeById(int id);
 
-    List<Employee> getEmployeesWithSalaryHigherThan(int salary);
+    List<EmployeeDto> getEmployeesWithSalariesHigherThan(int salary);
+
+    List<EmployeeDto> getEmployeesWithHighestSalaries();
+    List<EmployeeDto> getEmployees(String position);
+
+    List<EmployeeDto> getEmployeesFromPage(int page);
 }

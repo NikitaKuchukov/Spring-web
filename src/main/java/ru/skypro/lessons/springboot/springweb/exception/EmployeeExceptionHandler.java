@@ -11,7 +11,7 @@ public class EmployeeExceptionHandler {
     public ResponseEntity<?> handleNotFound(EmployeeNotFoundException e) {
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
-                .body("Сотрудник с id = %d н найден".formatted(e.getId()));
+                .body("Сотрудник с id = %d не найден".formatted(e.getId()));
     }
     @ExceptionHandler(EmployeeNotValidException.class)
     public ResponseEntity<?> handleBadRequest(EmployeeNotValidException e) {

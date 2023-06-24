@@ -1,10 +1,10 @@
 package ru.skypro.lessons.springboot.springweb.exception;
 
 import lombok.Data;
-import ru.skypro.lessons.springboot.springweb.model.Employee;
+import ru.skypro.lessons.springboot.springweb.dto.EmployeeDto;
 
 @Data
 public class EmployeeNotValidException extends RuntimeException {
 
-    private final Employee employee;
+    private final EmployeeDto employee;
 }
