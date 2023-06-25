@@ -40,4 +40,10 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     List<Employee> findEmployeeBySalaryGreaterThan(int salary);
     List<Employee> findEmployeesByPosition_PositionContainingIgnoreCase(String position);
 
+    @Query("""
+            SELECT new ru.skypro.lessons.springboot.springweb.dto.EmployeeDto(e.id, e.name, e.salary, e.position.position)
+            FROM Employee e
+            WHERE e.salary = (SELECT MAX(e.salary) FROM Employee e)
+            """)
+    List<EmployeeDto> findEmployeeWithHighSalary();
 }

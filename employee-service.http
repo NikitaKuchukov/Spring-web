@@ -43,7 +43,8 @@ Content-Type: application/json
 
 {
   "name": "sdgsdg",
-  "salary": 1234
+  "salary": 96451,
+  "position": "QA"
 }
 
 ### Удаление сотрудника
@@ -59,4 +60,8 @@ Content-Type: application/json
 
 ### Получение сотрудников по странице
 GET http://localhost:8080/employee/page?page=1
+Content-Type: application/json
+
+### Получение сотрудника(ов) с наибольшей зарплатой
+GET http://localhost:8080/employee/withHighSalary
 Content-Type: application/json

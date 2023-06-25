@@ -81,4 +81,9 @@ public class EmployeeController {
     public List<EmployeeDto> getEmployeesFromPage(@RequestParam(required = false, defaultValue = "0") int page) {
         return employeeService.getEmployeesFromPage(page);
     }
+
+    @GetMapping("withHighSalary")
+    public List<EmployeeDto> findEmployeesWithHighSalary() {
+        return employeeService.findEmployeesWithHighSalary();
+    }
 }

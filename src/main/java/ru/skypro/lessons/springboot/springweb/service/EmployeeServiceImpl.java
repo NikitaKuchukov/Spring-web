@@ -123,4 +123,10 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .map(employeeMapper::toDto)
                 .toList();
     }
+
+    @Override
+    public List<EmployeeDto> findEmployeesWithHighSalary() {
+        return employeeRepository.findEmployeeWithHighSalary();
+
+    }
 }

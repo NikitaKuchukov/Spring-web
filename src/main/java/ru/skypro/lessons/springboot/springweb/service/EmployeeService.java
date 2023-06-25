@@ -27,4 +27,6 @@ public interface EmployeeService {
     List<EmployeeDto> getEmployees(String position);
 
     List<EmployeeDto> getEmployeesFromPage(int page);
+
+    List<EmployeeDto> findEmployeesWithHighSalary();
 }
