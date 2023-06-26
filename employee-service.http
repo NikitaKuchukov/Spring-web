@@ -1,35 +1,67 @@
+### Получение сотрудника с максимальной зарплатой
+GET http://localhost:8080/employee/salary/max
+Content-Type: application/json
+
+### Получение сотрудника с минимальной зарплатой
+GET http://localhost:8080/employee/salary/min
+Content-Type: application/json
+
+### Получение сумм зарплат сотрудников
+GET http://localhost:8080/employee/salary/sum
+Content-Type: application/json
+
+### Получение сотрудников с зарплатой выше среднего
+GET http://localhost:8080/employee/salary/aboveAverage
+Content-Type: application/json
+
 ### Получение всех сотрудников
-GET http://localhost:8080/employee/getAll
+GET http://localhost:8080/employee/all
 Content-Type: application/json
 
 ### Получение сотрудника по id
-GET http://localhost:8080/employee/get/0
+GET http://localhost:8080/employee/3
 Content-Type: application/json
 
-
 ### Создание сотрудников
-POST http://localhost:8080/employee/createList
+POST http://localhost:8080/employee/employeeList
 Content-Type: application/json
 
 [
   {
-    "name": "Vasya",
-    "salary": 12000
+    "name": "214",
+    "salary": 12221
   },
   {
-    "name": "asdfgsdg",
-    "salary": 123123
+    "name": "45346",
+    "salary": 37543
   }
 ]
 
-### Обновление сотрудника
-PUT http://localhost:8080/employee/update/1
+### Обновление сотрудника по id
+PUT http://localhost:8080/employee/11
 Content-Type: application/json
 
 {
   "name": "sdgsdg",
-  "salary": 1234
+  "salary": 96451,
+  "position": "QA"
 }
 
 ### Удаление сотрудника
-DELETE http://localhost:8080/employee/delete/0
+DELETE http://localhost:8080/employee/1
+
+### Получение сотрудников с зарплатой больше чем
+GET http://localhost:8080/employee/salary/higherThan?salary=120000
+Content-Type: application/json
+
+### Получение сотрудников по позиции
+GET http://localhost:8080/employee?position=
+Content-Type: application/json
+
+### Получение сотрудников по странице
+GET http://localhost:8080/employee/page?page=1
+Content-Type: application/json
+
+### Получение сотрудника(ов) с наибольшей зарплатой
+GET http://localhost:8080/employee/withHighSalary
+Content-Type: application/json
