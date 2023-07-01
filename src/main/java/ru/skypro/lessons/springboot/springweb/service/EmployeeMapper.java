@@ -2,6 +2,7 @@ package ru.skypro.lessons.springboot.springweb.service;
 
 import org.springframework.stereotype.Component;
 import ru.skypro.lessons.springboot.springweb.dto.EmployeeDto;
+import ru.skypro.lessons.springboot.springweb.dto.PositionDto;
 import ru.skypro.lessons.springboot.springweb.entity.Employee;
 import ru.skypro.lessons.springboot.springweb.entity.Position;
 
@@ -14,6 +15,12 @@ public class EmployeeMapper {
         Employee employee = new Employee();
         employee.setName(employeeDto.getName());
         employee.setSalary(employeeDto.getSalary());
+
+        PositionDto positionDto = employeeDto.getPosition();
+        Position position = new Position();
+        position.setId(positionDto.getId());
+        position.setPosition(positionDto.getName());
+        employee.setPosition(position);
         return employee;
     }
 
@@ -22,10 +29,10 @@ public class EmployeeMapper {
         employeeDTO.setId(employee.getId());
         employeeDTO.setName(employee.getName());
         employeeDTO.setSalary(employee.getSalary());
-        employeeDTO.setPosition(
-                Optional.ofNullable(employee.getPosition())
-                        .map(Position::getPosition)
-                        .orElse(null));
+
+        Position position = employee.getPosition();
+        PositionDto positionDto = new PositionDto(position.getId(), position.getPosition());
+        employeeDTO.setPosition(positionDto);
         return employeeDTO;
     }
 }

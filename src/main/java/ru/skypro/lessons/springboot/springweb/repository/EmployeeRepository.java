@@ -15,7 +15,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     int findSumSalariesOfEmployees();
 
     @Query("""
-            SELECT new ru.skypro.lessons.springboot.springweb.dto.EmployeeDto(e.id, e.name, e.salary, p.position)
+            SELECT new ru.skypro.lessons.springboot.springweb.dto.EmployeeDto(e.id, e.name, e.salary, e.position)
             FROM Employee e LEFT JOIN FETCH Position p
             WHERE e.salary > (SELECT AVG(e.salary) FROM Employee e)
             """)
@@ -41,9 +41,11 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     List<Employee> findEmployeesByPosition_PositionContainingIgnoreCase(String position);
 
     @Query("""
-            SELECT new ru.skypro.lessons.springboot.springweb.dto.EmployeeDto(e.id, e.name, e.salary, e.position.position)
+            SELECT new ru.skypro.lessons.springboot.springweb.dto.EmployeeDto(e.id, e.name, e.salary, )
             FROM Employee e
             WHERE e.salary = (SELECT MAX(e.salary) FROM Employee e)
             """)
     List<EmployeeDto> findEmployeeWithHighSalary();
+
+
 }

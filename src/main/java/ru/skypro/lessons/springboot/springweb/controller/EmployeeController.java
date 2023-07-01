@@ -1,7 +1,9 @@
 package ru.skypro.lessons.springboot.springweb.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import ru.skypro.lessons.springboot.springweb.dto.EmployeeDto;
 import ru.skypro.lessons.springboot.springweb.service.EmployeeService;
 
@@ -85,5 +87,11 @@ public class EmployeeController {
     @GetMapping("withHighSalary")
     public List<EmployeeDto> findEmployeesWithHighSalary() {
         return employeeService.findEmployeesWithHighSalary();
+    }
+
+
+    @PostMapping(value = "upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public void upload(@RequestPart("employees") MultipartFile file) {
+        employeeService.upload(file);
     }
 }

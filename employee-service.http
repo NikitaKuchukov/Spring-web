@@ -65,3 +65,24 @@ Content-Type: application/json
 ### Получение сотрудника(ов) с наибольшей зарплатой
 GET http://localhost:8080/employee/withHighSalary
 Content-Type: application/json
+
+### Создание рапорта
+POST http://localhost:8080/report
+
+### Получение рапорта по ID
+GET http://localhost:8080/report/2
+
+### Загрузка файла с сотрудниками в БД
+POST http://localhost:8080/employee/upload
+#Authorization: Basic dXNLcjoxMjMONTY=
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="employees"; filename="employees.json"
+Content-Type: application/json
+
+< ./employees.json
+--WebAppBoundary--
+
+### Получение рапорт файла по ID
+GET http://localhost:8080/report/file/2
