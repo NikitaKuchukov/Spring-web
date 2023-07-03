@@ -11,6 +11,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import ru.skypro.lessons.springboot.springweb.dto.EmployeeDto;
+import ru.skypro.lessons.springboot.springweb.dto.PositionDto;
 import ru.skypro.lessons.springboot.springweb.dto.ReportDto;
 import ru.skypro.lessons.springboot.springweb.entity.Report;
 import ru.skypro.lessons.springboot.springweb.exception.EmployeeNotFoundException;
@@ -90,6 +91,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .orElseThrow(() -> new EmployeeNotFoundException(id));
         employee.setName(employeeDto.getName());
         employee.setSalary(employeeDto.getSalary());
+        employee.setPosition(employeeDto.getPosition());
         employeeRepository.save(employee);
     }
 
@@ -178,7 +180,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         try (Writer writer = new FileWriter(f)) {
             writer.write(content);
         } catch (IOException e) {
-            throw new UncheckedIOException("Cannot generate report filee", e);
+            throw new UncheckedIOException("Cannot generate report file", e);
         }
         return f.getName();
     }

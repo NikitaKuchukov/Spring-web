@@ -11,9 +11,9 @@ public class EmployeeDto {
     private int id;
     private String name;
     private int salary;
-    private PositionDto position;
+    private Position position;
 
-    public EmployeeDto(int id, String name, int salary, PositionDto position) {
+    public EmployeeDto(int id, String name, int salary, Position position) {
         this.id = id;
         this.name = name;
         this.salary = salary;

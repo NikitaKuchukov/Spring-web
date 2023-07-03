@@ -3,6 +3,7 @@ package ru.skypro.lessons.springboot.springweb.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import ru.skypro.lessons.springboot.springweb.dto.EmployeeDto;
+import ru.skypro.lessons.springboot.springweb.dto.PositionDto;
 import ru.skypro.lessons.springboot.springweb.entity.Employee;
 
 import java.util.List;
@@ -38,10 +39,11 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     Optional<Employee> findEmployeeWithMaxSalary();
 
     List<Employee> findEmployeeBySalaryGreaterThan(int salary);
+
     List<Employee> findEmployeesByPosition_PositionContainingIgnoreCase(String position);
 
     @Query("""
-            SELECT new ru.skypro.lessons.springboot.springweb.dto.EmployeeDto(e.id, e.name, e.salary, )
+            SELECT new ru.skypro.lessons.springboot.springweb.dto.EmployeeDto(e.id, e.name, e.salary, e.position)
             FROM Employee e
             WHERE e.salary = (SELECT MAX(e.salary) FROM Employee e)
             """)

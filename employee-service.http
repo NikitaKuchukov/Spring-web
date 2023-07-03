@@ -19,7 +19,7 @@ GET http://localhost:8080/employee/all
 Content-Type: application/json
 
 ### Получение сотрудника по id
-GET http://localhost:8080/employee/3
+GET http://localhost:8080/employee/66
 Content-Type: application/json
 
 ### Создание сотрудников
@@ -28,38 +28,49 @@ Content-Type: application/json
 
 [
   {
-    "name": "214",
-    "salary": 12221
+    "name": "Артем",
+    "salary": 110000,
+    "position": {
+      "id": 2,
+      "position": "QA"
+    }
   },
   {
-    "name": "45346",
-    "salary": 37543
+    "name": "Вова",
+    "salary": 90000,
+    "position": {
+      "id": 1,
+      "position": "Программист"
+    }
   }
 ]
 
 ### Обновление сотрудника по id
-PUT http://localhost:8080/employee/11
+PUT http://localhost:8080/employee/66
 Content-Type: application/json
 
 {
-  "name": "sdgsdg",
-  "salary": 96451,
-  "position": "QA"
+  "name": "Игорь",
+  "salary": 95000,
+  "position": {
+    "id": 1,
+    "position": "Программист"
+  }
 }
 
 ### Удаление сотрудника
-DELETE http://localhost:8080/employee/1
+DELETE http://localhost:8080/employee/65
 
 ### Получение сотрудников с зарплатой больше чем
-GET http://localhost:8080/employee/salary/higherThan?salary=120000
+GET http://localhost:8080/employee/salary/higherThan?salary=30000
 Content-Type: application/json
 
 ### Получение сотрудников по позиции
-GET http://localhost:8080/employee?position=
+GET http://localhost:8080/employee?position=П
 Content-Type: application/json
 
 ### Получение сотрудников по странице
-GET http://localhost:8080/employee/page?page=1
+GET http://localhost:8080/employee/page?page=0
 Content-Type: application/json
 
 ### Получение сотрудника(ов) с наибольшей зарплатой
@@ -70,7 +81,7 @@ Content-Type: application/json
 POST http://localhost:8080/report
 
 ### Получение рапорта по ID
-GET http://localhost:8080/report/2
+GET http://localhost:8080/report/5
 
 ### Загрузка файла с сотрудниками в БД
 POST http://localhost:8080/employee/upload
@@ -85,4 +96,4 @@ Content-Type: application/json
 --WebAppBoundary--
 
 ### Получение рапорт файла по ID
-GET http://localhost:8080/report/file/2
+GET http://localhost:8080/report/file/4
