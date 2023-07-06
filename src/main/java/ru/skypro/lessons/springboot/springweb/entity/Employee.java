@@ -16,5 +16,4 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "position_id")
     private Position position;
-
 }
