@@ -19,7 +19,7 @@ GET http://localhost:8080/employee/all
 Content-Type: application/json
 
 ### Получение сотрудника по id
-GET http://localhost:8080/employee/66
+GET http://localhost:8080/employee/68
 Content-Type: application/json
 
 ### Создание сотрудников
