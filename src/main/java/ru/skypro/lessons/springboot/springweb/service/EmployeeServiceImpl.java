@@ -11,12 +11,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import ru.skypro.lessons.springboot.springweb.dto.EmployeeDto;
-import ru.skypro.lessons.springboot.springweb.dto.PositionDto;
 import ru.skypro.lessons.springboot.springweb.dto.ReportDto;
 import ru.skypro.lessons.springboot.springweb.entity.Report;
 import ru.skypro.lessons.springboot.springweb.exception.EmployeeNotFoundException;
 import ru.skypro.lessons.springboot.springweb.exception.EmployeeNotValidException;
 import ru.skypro.lessons.springboot.springweb.entity.Employee;
+import ru.skypro.lessons.springboot.springweb.mapper.EmployeeMapper;
 import ru.skypro.lessons.springboot.springweb.repository.EmployeeRepository;
 import ru.skypro.lessons.springboot.springweb.repository.ReportRepository;
 

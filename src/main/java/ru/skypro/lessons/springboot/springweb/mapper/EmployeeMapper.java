@@ -1,4 +1,4 @@
-package ru.skypro.lessons.springboot.springweb.service;
+package ru.skypro.lessons.springboot.springweb.mapper;
 
 import org.springframework.stereotype.Component;
 import ru.skypro.lessons.springboot.springweb.dto.EmployeeDto;
