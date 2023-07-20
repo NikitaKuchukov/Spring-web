@@ -14,6 +14,6 @@ public class InfoController {
 
     @GetMapping()
     public String appInfo() {
-        return profile;
+        return "profile - " + profile;
     }
 }
