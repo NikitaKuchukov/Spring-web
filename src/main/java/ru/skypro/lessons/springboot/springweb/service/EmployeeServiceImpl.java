@@ -5,6 +5,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.annotation.Nullable;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
 import org.springframework.data.domain.PageRequest;
@@ -30,6 +32,8 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService {
 
+    private static final Logger logger = LoggerFactory.getLogger(EmployeeServiceImpl.class);
+
     private final EmployeeRepository employeeRepository;
     private final EmployeeMapper employeeMapper;
     private final ObjectMapper objectMapper;
@@ -37,6 +41,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public EmployeeDto findEmployeeWithMinSalary() {
+        logger.info("Was invoked method for find employee with min salary");
         return employeeRepository.findEmployeeWithMinSalary()
                 .map(employeeMapper::toDto)
                 .orElse(null);
@@ -44,6 +49,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public EmployeeDto findEmployeeWithMaxSalary() {
+        logger.info("Was invoked method for find employee with max salary");
         return employeeRepository.findEmployeeWithMaxSalary()
                 .map(employeeMapper::toDto)
                 .orElse(null);
@@ -51,16 +57,19 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public double findSumSalariesOfEmployees() {
+        logger.info("Was invoked method for find sum salaries");
         return employeeRepository.findSumSalariesOfEmployees();
     }
 
     @Override
     public List<EmployeeDto> findEmployeesWithAboveAverageSalaries() {
+        logger.info("Was invoked method for find employees with above average salaries");
         return employeeRepository.findEmployeesWithAboveAverageSalaries();
     }
 
     @Override
     public List<EmployeeDto> getAll() {
+        logger.info("Was invoked method for get all employees");
         return employeeRepository.findAll().stream()
                 .map(employeeMapper::toDto)
                 .collect(Collectors.toList());
@@ -68,6 +77,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public List<EmployeeDto> createEmployeeList(List<EmployeeDto> employees) {
+        logger.info("Was invoked method for create employee list: {}", employees);
         Optional<EmployeeDto> incorrectEmployee = employees.stream()
                 .filter(employee -> employee.getSalary() < 0 || employee.getName() == null
                         || employee.getName().isEmpty())
@@ -87,6 +97,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void updateEmployeeById(int id, EmployeeDto employeeDto) {
+        logger.info("Was invoked method for update employee: {} with id: {}", employeeDto, id);
         Employee employee = employeeRepository.findById(id)
                 .orElseThrow(() -> new EmployeeNotFoundException(id));
         employee.setName(employeeDto.getName());
@@ -97,6 +108,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public EmployeeDto getEmployeeById(int id) {
+        logger.info("Was invoked method for get employee by id: {}", id);
         return employeeRepository.findById(id)
                 .map(employeeMapper::toDto)
                 .orElseThrow(() -> new EmployeeNotFoundException(id));
@@ -105,6 +117,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void deleteEmployeeById(int id) {
+        logger.info("Was invoked method for delete employee by id: {}", id);
         Employee employee = employeeRepository.findById(id)
                 .orElseThrow(() -> new EmployeeNotFoundException(id));
         employeeRepository.delete(employee);
@@ -112,18 +125,16 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public List<EmployeeDto> getEmployeesWithSalariesHigherThan(int salary) {
+        logger.info("Was invoked method for get employees with salary higher than: {}", salary);
         return employeeRepository.findEmployeeBySalaryGreaterThan(salary).stream()
                 .map(employeeMapper::toDto)
                 .toList();
     }
 
-    @Override
-    public List<EmployeeDto> getEmployeesWithHighestSalaries() {
-        return null;
-    }
 
     @Override
-    public List<EmployeeDto> getEmployees(@Nullable String position) {
+    public List<EmployeeDto> getEmployeesByPosition(@Nullable String position) {
+        logger.info("Was invoked method for get employees by position: {}", position);
         return Optional.ofNullable(position)
                 .map(employeeRepository::findEmployeesByPosition_PositionContainingIgnoreCase)
                 .orElseGet(employeeRepository::findAll)
@@ -134,6 +145,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public List<EmployeeDto> getEmployeesFromPage(int page) {
+        logger.info("Was invoked method for get employees from page: {}", page);
         return employeeRepository.findAll(PageRequest.of(page, 10)).stream()
                 .map(employeeMapper::toDto)
                 .toList();
@@ -141,21 +153,24 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public List<EmployeeDto> findEmployeesWithHighSalary() {
+        logger.info("Was invoked method for find employees with the highest salary");
         return employeeRepository.findEmployeeWithHighSalary();
 
     }
 
     @Override
     public Resource findReport(int id) {
+        logger.info("Was invoked method for find report by id: {}", id);
         return new ByteArrayResource(
                 reportRepository.findById(id)
-                        .orElseThrow(() -> new IllegalStateException("Report with id " + id + " not found"))
+                        .orElseThrow(() -> new IllegalStateException("Report with id = %d not found".formatted(id)))
                         .getReport()
                         .getBytes(StandardCharsets.UTF_8));
     }
 
     @Override
     public void upload(MultipartFile file) {
+        logger.info("Was invoked method for upload file with employees in DB: {}", file);
         try {
             List<EmployeeDto> empDto = objectMapper.readValue(file.getBytes(), new TypeReference<>() {
             });
@@ -169,6 +184,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public File findReportFile(int id) {
+        logger.info("Was invoked method for find report file by id: {}", id);
         return reportRepository.findById(id)
                 .map(Report::getPath)
                 .map(File::new)
@@ -176,10 +192,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     public String generateReportFile(String content) {
+        logger.info("Was invoked method for generate report file");
         File f = new File("report_" + System.currentTimeMillis() + ".json");
         try (Writer writer = new FileWriter(f)) {
             writer.write(content);
         } catch (IOException e) {
+            logger.error("Cannot generate report file", e);
             throw new UncheckedIOException("Cannot generate report file", e);
         }
         return f.getName();
@@ -187,6 +205,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public int generateReport() {
+        logger.info("Was invoked method for generate report");
         List<ReportDto> report = reportRepository.buildReport();
 
         try {
@@ -197,6 +216,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             reportEntity.setPath(path);
             return reportRepository.save(reportEntity).getId();
         } catch (JsonProcessingException e) {
+            logger.error("Cannot generate report", e);
             throw new IllegalStateException("Cannot generate report", e);
         }
     }

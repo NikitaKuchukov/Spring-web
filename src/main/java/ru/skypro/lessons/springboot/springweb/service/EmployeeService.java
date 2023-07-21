@@ -24,8 +24,7 @@ public interface EmployeeService {
 
     List<EmployeeDto> getEmployeesWithSalariesHigherThan(int salary);
 
-    List<EmployeeDto> getEmployeesWithHighestSalaries();
-    List<EmployeeDto> getEmployees(String position);
+    List<EmployeeDto> getEmployeesByPosition(String position);
 
     List<EmployeeDto> getEmployeesFromPage(int page);
 

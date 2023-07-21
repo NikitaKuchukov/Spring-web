@@ -67,18 +67,16 @@ public class EmployeeController {
         return employeeService.getEmployeesWithSalariesHigherThan(salary);
     }
 
-    @GetMapping("salary/highest")
-    public List<EmployeeDto> getEmployeesWithHighestSalaries() {
-        return employeeService.getEmployeesWithHighestSalaries();
-    }
-@GetMapping
-    public List<EmployeeDto> getEmployees(@RequestParam(required = false) String position) {
-        return employeeService.getEmployees(
+
+    @GetMapping
+    public List<EmployeeDto> getEmployeesByPosition(@RequestParam(required = false) String position) {
+        return employeeService.getEmployeesByPosition(
                 Optional.ofNullable(position)
                         .filter(pos -> !pos.isEmpty())
                         .orElse(null)
         );
     }
+
     @GetMapping("page")
     public List<EmployeeDto> getEmployeesFromPage(@RequestParam(required = false, defaultValue = "0") int page) {
         return employeeService.getEmployeesFromPage(page);

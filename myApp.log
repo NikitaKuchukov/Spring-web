@@ -1,0 +1,18 @@
+12:24:37.586 [http-nio-8080-exec-2] ERROR r.s.l.s.s.e.EmployeeExceptionHandler - There is no employee with id: 21
+12:24:57.348 [http-nio-8080-exec-4] ERROR r.s.l.s.s.e.EmployeeExceptionHandler - There is no employee with id: 21
+12:27:58.771 [http-nio-8080-exec-10] ERROR r.s.l.s.s.e.EmployeeExceptionHandler - There is no employee with id: 21
+12:28:24.353 [http-nio-8080-exec-1] ERROR r.s.l.s.s.e.EmployeeExceptionHandler - There is no employee with id: 21
+00:27:07.411 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
