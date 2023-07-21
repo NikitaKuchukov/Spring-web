@@ -23,6 +23,6 @@ public class Report {
     @Column(updatable = false, name = "created_at", nullable = false)
     private Instant createdAd;
 
-    private  String path;
+    private String path;
 
 }

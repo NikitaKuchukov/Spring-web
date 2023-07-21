@@ -2,10 +2,12 @@ package ru.skypro.lessons.springboot.springweb.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
 @Table(name = "app_user")
+@NoArgsConstructor
 public class AppUser {
 
     @Id

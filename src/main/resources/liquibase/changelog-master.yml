@@ -1,8 +1,13 @@
 databaseChangelog:
   - include:
+      file: liquibase/scripts/app_user.sql
+
+  - include:
       file: liquibase/scripts/position.sql
 
   - include:
       file: liquibase/scripts/employee.sql
 
+  - include:
+      file: liquibase/scripts/report.sql
 
