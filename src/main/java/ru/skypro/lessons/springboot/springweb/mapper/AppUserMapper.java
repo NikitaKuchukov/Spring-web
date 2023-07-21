@@ -2,7 +2,6 @@ package ru.skypro.lessons.springboot.springweb.mapper;
 
 import org.springframework.stereotype.Component;
 import ru.skypro.lessons.springboot.springweb.entity.AppUser;
-import ru.skypro.lessons.springboot.springweb.security.AppUserDetails;
 import ru.skypro.lessons.springboot.springweb.security.AppUserDto;
 
 @Component
