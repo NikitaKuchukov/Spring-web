@@ -4,8 +4,8 @@
 -- changeset test:1
 CREATE TABLE report
 (
-    id         BIGSERIAL PRIMARY KEY,
-    report     VARCHAR(255),
+    id         SERIAL PRIMARY KEY,
+    report     OID,
     created_at TIMESTAMP,
     path       VARCHAR(255)
 );

@@ -4,6 +4,6 @@
 -- changeset test:1
 CREATE TABLE position
 (
-    id       BIGSERIAL PRIMARY KEY,
+    id       SERIAL PRIMARY KEY,
     position VARCHAR(255)
 );

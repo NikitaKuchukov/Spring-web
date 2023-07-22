@@ -1,7 +1,4 @@
-databaseChangelog:
-  - include:
-      file: liquibase/scripts/app_user.sql
-
+databaseChangeLog:
   - include:
       file: liquibase/scripts/position.sql
 
@@ -10,4 +7,7 @@ databaseChangelog:
 
   - include:
       file: liquibase/scripts/report.sql
+
+  - include:
+      file: liquibase/scripts/app_user.sql
 

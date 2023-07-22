@@ -4,8 +4,8 @@
 -- changeset test:1
 CREATE TABLE employee
 (
-    id       BIGSERIAL PRIMARY KEY,
+    id       SERIAL PRIMARY KEY,
     name     VARCHAR(255),
     salary   INT,
-    position BIGINT REFERENCES position (id)
+    position_id INT REFERENCES position (id)
 );
