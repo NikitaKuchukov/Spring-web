@@ -8,10 +8,10 @@ import java.io.File;
 import java.util.List;
 
 public interface EmployeeService {
-    EmployeeDto findEmployeeWithMinSalary();
-    EmployeeDto findEmployeeWithMaxSalary();
-    double findSumSalariesOfEmployees();
-    List<EmployeeDto> findEmployeesWithAboveAverageSalaries();
+    EmployeeDto getEmployeeWithMinSalary();
+    EmployeeDto getEmployeeWithMaxSalary();
+    double getSumSalariesOfEmployees();
+    List<EmployeeDto> getEmployeesWithAboveAverageSalaries();
     List<EmployeeDto> getAll();
 
     List<EmployeeDto> createEmployeeList(List<EmployeeDto> employees);
@@ -28,7 +28,7 @@ public interface EmployeeService {
 
     List<EmployeeDto> getEmployeesFromPage(int page);
 
-    List<EmployeeDto> findEmployeesWithHighSalary();
+    List<EmployeeDto> getEmployeesWithHighSalary();
 
     int generateReport();
 

@@ -1,14 +1,14 @@
 [
   {
-    "name": "Иван",
+    "name": "Anna",
     "salary": 100000,
     "position": {
       "id": 1,
-      "position": "Программист"
+      "position": "Dev"
     }
   },
   {
-    "name": "Артем",
+    "name": "Artem",
     "salary": 110000,
     "position": {
       "id": 2,
@@ -16,11 +16,11 @@
     }
   },
   {
-    "name": "Петр",
+    "name": "Sergei",
     "salary": 90000,
     "position": {
       "id": 1,
-      "position": "Программист"
+      "position": "Dev"
     }
   }
 ]

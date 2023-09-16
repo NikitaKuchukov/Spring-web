@@ -13,7 +13,7 @@ import java.util.Optional;
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
     @Query("SELECT SUM(e.salary) FROM Employee e")
-    int findSumSalariesOfEmployees();
+    double findSumSalariesOfEmployees();
 
     @Query("""
             SELECT new ru.skypro.lessons.springboot.springweb.dto.EmployeeDto(e.id, e.name, e.salary, e.position)
