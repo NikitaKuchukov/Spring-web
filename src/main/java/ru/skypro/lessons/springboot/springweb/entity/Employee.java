@@ -1,13 +1,15 @@
 package ru.skypro.lessons.springboot.springweb.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
+@Getter
 @Entity
 @Table(name = "employee")
 @NoArgsConstructor
+@Builder
+@AllArgsConstructor
 public class Employee {
 
     @Id

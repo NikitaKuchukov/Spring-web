@@ -19,22 +19,22 @@ public class EmployeeController {
 
     @GetMapping("salary/max")
     public EmployeeDto findEmployeeWithMaxSalary() {
-        return employeeService.findEmployeeWithMaxSalary();
+        return employeeService.getEmployeeWithMaxSalary();
     }
 
     @GetMapping("salary/min")
     public EmployeeDto findEmployeeWithMinSalary() {
-        return employeeService.findEmployeeWithMinSalary();
+        return employeeService.getEmployeeWithMinSalary();
     }
 
     @GetMapping("salary/sum")
     public double findSumSalariesOfEmployees() {
-        return employeeService.findSumSalariesOfEmployees();
+        return employeeService.getSumSalariesOfEmployees();
     }
 
     @GetMapping("salary/aboveAverage")
     public List<EmployeeDto> findEmployeesWithAboveAverageSalaries() {
-        return employeeService.findEmployeesWithAboveAverageSalaries();
+        return employeeService.getEmployeesWithAboveAverageSalaries();
     }
 
     @GetMapping("all")
@@ -84,7 +84,7 @@ public class EmployeeController {
 
     @GetMapping("withHighSalary")
     public List<EmployeeDto> findEmployeesWithHighSalary() {
-        return employeeService.findEmployeesWithHighSalary();
+        return employeeService.getEmployeesWithHighSalary();
     }
 
 

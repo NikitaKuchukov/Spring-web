@@ -40,7 +40,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final ReportRepository reportRepository;
 
     @Override
-    public EmployeeDto findEmployeeWithMinSalary() {
+    public EmployeeDto getEmployeeWithMinSalary() {
         logger.info("Was invoked method for find employee with min salary");
         return employeeRepository.findEmployeeWithMinSalary()
                 .map(employeeMapper::toDto)
@@ -48,7 +48,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public EmployeeDto findEmployeeWithMaxSalary() {
+    public EmployeeDto getEmployeeWithMaxSalary() {
         logger.info("Was invoked method for find employee with max salary");
         return employeeRepository.findEmployeeWithMaxSalary()
                 .map(employeeMapper::toDto)
@@ -56,13 +56,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public double findSumSalariesOfEmployees() {
+    public double getSumSalariesOfEmployees() {
         logger.info("Was invoked method for find sum salaries");
         return employeeRepository.findSumSalariesOfEmployees();
     }
 
     @Override
-    public List<EmployeeDto> findEmployeesWithAboveAverageSalaries() {
+    public List<EmployeeDto> getEmployeesWithAboveAverageSalaries() {
         logger.info("Was invoked method for find employees with above average salaries");
         return employeeRepository.findEmployeesWithAboveAverageSalaries();
     }
@@ -152,10 +152,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public List<EmployeeDto> findEmployeesWithHighSalary() {
+    public List<EmployeeDto> getEmployeesWithHighSalary() {
         logger.info("Was invoked method for find employees with the highest salary");
         return employeeRepository.findEmployeeWithHighSalary();
-
     }
 
     @Override
