@@ -84,7 +84,7 @@ public class EmployeeServiceImplTest {
     @DisplayName("Get Employees with above average Salaries. Positive result")
     void getEmployeesWithAboveAverageSalaries_OK() {
         when(mockedRepository.findEmployeesWithAboveAverageSalaries())
-                .thenReturn(EMPLOYEE_WITH_ABOVE_AVERAGE_SALARY);
+                .thenReturn(EMPLOYEE_DTO_WITH_ABOVE_AVERAGE_SALARY);
 
         assertEquals(EMPLOYEE_WITH_ABOVE_AVERAGE_SALARY, out.getEmployeesWithAboveAverageSalaries());
         verify(mockedRepository, times(1)).findEmployeesWithAboveAverageSalaries();

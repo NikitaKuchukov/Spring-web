@@ -89,7 +89,7 @@ public class EmployeeController {
 
 
     @PostMapping(value = "upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public void upload(@RequestPart("employees") MultipartFile file) {
+    public void upload(@RequestParam("employees") MultipartFile file) {
         employeeService.upload(file);
     }
 }

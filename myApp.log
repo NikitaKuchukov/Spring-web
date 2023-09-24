@@ -7006,3 +7006,64 @@ Caused by: org.hibernate.tool.schema.spi.SchemaManagementException: Schema-valid
 18:15:02.511 [main] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Последовательность "POSITION_SEQ" не найдена
 Sequence "POSITION_SEQ" not found; SQL statement:
 select next value for position_seq [90036-214]
+15:56:32.189 [main] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: Validation Failed:
+     1 changesets check sum
+          liquibase/scripts/report.sql::1::test was: 8:38b7ea9ee7a735deefdaefc311480c7b but is now: 8:6b17d7a182c2b466e48357092afd6993
+
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1770)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1156)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:931)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:608)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:733)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:435)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:311)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1305)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1294)
+	at ru.skypro.lessons.springboot.springweb.SpringWebApplication.main(SpringWebApplication.java:10)
+Caused by: liquibase.exception.ValidationFailedException: Validation Failed:
+     1 changesets check sum
+          liquibase/scripts/report.sql::1::test was: 8:38b7ea9ee7a735deefdaefc311480c7b but is now: 8:6b17d7a182c2b466e48357092afd6993
+
+	at liquibase.changelog.DatabaseChangeLog.validate(DatabaseChangeLog.java:357)
+	at liquibase.Liquibase$16.run(Liquibase.java:2296)
+	at liquibase.Scope.lambda$child$0(Scope.java:187)
+	at liquibase.Scope.child(Scope.java:196)
+	at liquibase.Scope.child(Scope.java:186)
+	at liquibase.Scope.child(Scope.java:165)
+	at liquibase.Liquibase.runInScope(Liquibase.java:2639)
+	at liquibase.Liquibase.listUnrunChangeSets(Liquibase.java:2286)
+	at liquibase.Liquibase.isUpToDateFastCheck(Liquibase.java:506)
+	at liquibase.Liquibase.lambda$update$1(Liquibase.java:237)
+	at liquibase.Scope.lambda$child$0(Scope.java:187)
+	at liquibase.Scope.child(Scope.java:196)
+	at liquibase.Scope.child(Scope.java:186)
+	at liquibase.Scope.child(Scope.java:165)
+	at liquibase.Liquibase.runInScope(Liquibase.java:2639)
+	at liquibase.Liquibase.update(Liquibase.java:236)
+	at liquibase.Liquibase.update(Liquibase.java:221)
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:329)
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:284)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1816)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1766)
+	... 18 common frames omitted
+17:35:56.980 [main] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Нарушение ссылочной целостности: "CONSTRAINT_75: PUBLIC.EMPLOYEE FOREIGN KEY(POSITION_ID) REFERENCES PUBLIC.POSITION(ID) (1)"
+Referential integrity constraint violation: "CONSTRAINT_75: PUBLIC.EMPLOYEE FOREIGN KEY(POSITION_ID) REFERENCES PUBLIC.POSITION(ID) (1)"; SQL statement:
+insert into employee (name,position_id,salary,id) values (?,?,?,default) [23506-214]
+17:37:44.820 [main] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Нарушение ссылочной целостности: "CONSTRAINT_75: PUBLIC.EMPLOYEE FOREIGN KEY(POSITION_ID) REFERENCES PUBLIC.POSITION(ID) (1)"
+Referential integrity constraint violation: "CONSTRAINT_75: PUBLIC.EMPLOYEE FOREIGN KEY(POSITION_ID) REFERENCES PUBLIC.POSITION(ID) (1)"; SQL statement:
+insert into employee (name,position_id,salary,id) values (?,?,?,default) [23506-214]
+17:45:40.073 [main] ERROR r.s.l.s.s.e.EmployeeExceptionHandler - There is no employee with id: 1
+17:46:58.941 [main] ERROR r.s.l.s.s.e.EmployeeExceptionHandler - There is no employee with id: 1
+19:17:36.255 [main] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Нарушение ссылочной целостности: "CONSTRAINT_75: PUBLIC.EMPLOYEE FOREIGN KEY(POSITION_ID) REFERENCES PUBLIC.POSITION(ID) (1)"
+Referential integrity constraint violation: "CONSTRAINT_75: PUBLIC.EMPLOYEE FOREIGN KEY(POSITION_ID) REFERENCES PUBLIC.POSITION(ID) (1)"; SQL statement:
+insert into employee (name,position_id,salary,id) values (?,?,?,default) [23506-214]

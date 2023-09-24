@@ -17,7 +17,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
     @Query("""
             SELECT new ru.skypro.lessons.springboot.springweb.dto.EmployeeDto(e.id, e.name, e.salary, e.position)
-            FROM Employee e LEFT JOIN FETCH Position p
+            FROM Employee e JOIN FETCH Position p
             WHERE e.salary > (SELECT AVG(e.salary) FROM Employee e)
             """)
     List<EmployeeDto> findEmployeesWithAboveAverageSalaries();
