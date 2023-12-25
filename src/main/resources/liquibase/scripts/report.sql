@@ -5,7 +5,7 @@
 CREATE TABLE report
 (
     id         SERIAL PRIMARY KEY,
-    report     OID,
+    report     VARCHAR(255),
     created_at TIMESTAMP,
     path       VARCHAR(255)
 );

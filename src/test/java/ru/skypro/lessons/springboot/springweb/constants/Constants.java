@@ -22,6 +22,11 @@ public class Constants {
 
     public static final Employee EMPLOYEE = new Employee(1, "Anton", 150_000, new Position(1, "Dev"));
     public static final EmployeeDto EMPLOYEE_DTO = new EmployeeDto(1, "Anton", 150_000, new Position(1, "Dev"));
+
+    public static final Position POSITION1 = new Position(1, "Dev");
+    public static final Position POSITION2 = new Position(2, "QA");
+    public static final List<Position> POSITION_LIST = List.of(POSITION1, POSITION2);
+
     public static final List<Employee> EMPLOYEE_LIST = List.of(
             new Employee(1, "Andrey", 125_000, new Position(1, "Dev")),
             new Employee(2, "Dima", 150_000, new Position(2, "QA")),
@@ -54,8 +59,11 @@ public class Constants {
             .mapToDouble(EmployeeDto::getSalary)
             .sum();
 
-    public static final List<EmployeeDto> EMPLOYEE_WITH_ABOVE_AVERAGE_SALARY = EMPLOYEE_DTO_LIST.stream()
+    public static final List<EmployeeDto> EMPLOYEE_DTO_WITH_ABOVE_AVERAGE_SALARY = EMPLOYEE_DTO_LIST.stream()
             .filter(e -> e.getSalary() > (SUM_OF_SALARY / EMPLOYEE_DTO_LIST.size()))
+            .toList();
+    public static final List<Employee> EMPLOYEE_WITH_ABOVE_AVERAGE_SALARY = EMPLOYEE_LIST.stream()
+            .filter(e -> e.getSalary() > (SUM_OF_SALARY / EMPLOYEE_LIST.size()))
             .toList();
 
 

@@ -2,6 +2,7 @@ package ru.skypro.lessons.springboot.springweb.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.Accessors;
 
 @Data
 @Getter
@@ -10,6 +11,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
+@Accessors(chain = true)
 public class Employee {
 
     @Id
